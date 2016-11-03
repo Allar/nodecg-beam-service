@@ -6,10 +6,8 @@ module.exports = function (nodecg) {
                 updateRequest: 'dashboard-update-request'
             },
             channel: {
-                online: 'beam-channel-online',
-                offline: 'beam-channel-offline',
-                followed: 'beam-channel-followed',
-                unfollowed: 'beam-channel-unfollowed',
+                followed: 'channel-followed',
+                unfollowed: 'channel-unfollowed'
             }
         },
         ReplicantData: {
@@ -25,7 +23,7 @@ module.exports = function (nodecg) {
                 viewersCurrent: nodecg.Replicant('ChannelViewersCurrent', {defaultValue: 0}),
                 numFollowers: nodecg.Replicant('ChannelFollowers', {defaultValue: 0}),
                 description: nodecg.Replicant('ChannelDescription', {defaultValue: "Unknown"}),
-                typeId: nodecg.Replicant('ChannelDescription', {defaultValue: "Unknown"}),
+                typeId: nodecg.Replicant('ChannelTypeId', {defaultValue: 0}),
                 interactive: nodecg.Replicant('ChannelInteractive', {defaultValue: false}),
                 interactiveGameId: nodecg.Replicant('ChannelInteractiveGameId', {defaultValue: 0})
             }
