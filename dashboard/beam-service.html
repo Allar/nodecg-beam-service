@@ -7,6 +7,7 @@
     <link rel="import" href="components/iron-icons/iron-icons.html">
     <link rel="import" href="components/paper-icon-button/paper-icon-button.html">
     <link rel="import" href="components/nodecg-message-button/nodecg-message-button.html">
+    <link rel="import" href="components/nodecg-toggle/nodecg-toggle.html">
     
 </head>
 <body>
@@ -17,6 +18,12 @@
             Followers: <span id="Followers">0</span>
             Sparks: <span id="Sparks">0</span>
             Exp: <span id="Experience">0</span>
+        </div>
+    </paper-card>
+    <paper-card heading="Settings">
+        <div class="card-actions">
+            <nodecg-replicant replicant-name="DashboardAllowRefollow"></nodecg-replicant>
+            <nodecg-toggle replicant-name="DashboardAllowRefollow">Allow Refollows</nodecg-toggle>
         </div>
     </paper-card>
     <script src="beam-service.js"></script>

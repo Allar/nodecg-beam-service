@@ -11,6 +11,9 @@ module.exports = function (nodecg) {
             }
         },
         ReplicantData: {
+            dashboard: {
+                allowRefollow: nodecg.Replicant('DashboardAllowRefollow', {defaultValue: false})
+            },
             user: {
                 sparks: nodecg.Replicant('UserSparks', {defaultValue: 0}),
                 experience: nodecg.Replicant('UserExp', {defaultValue: 0})
@@ -25,7 +28,8 @@ module.exports = function (nodecg) {
                 description: nodecg.Replicant('ChannelDescription', {defaultValue: "Unknown"}),
                 typeId: nodecg.Replicant('ChannelTypeId', {defaultValue: 0}),
                 interactive: nodecg.Replicant('ChannelInteractive', {defaultValue: false}),
-                interactiveGameId: nodecg.Replicant('ChannelInteractiveGameId', {defaultValue: 0})
+                interactiveGameId: nodecg.Replicant('ChannelInteractiveGameId', {defaultValue: 0}),
+                announcedFollowers: nodecg.Replicant('ChannelAnnouncedFollowers', {defaultValue: []}),
             }
         }
     };

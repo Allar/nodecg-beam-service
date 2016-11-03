@@ -2,6 +2,15 @@
 var Constellation = require('constellation-client');
 var request = require('request');
 
+function array_contains(arr, obj) {
+    for (var i = 0; i < arr.length; ++i) {
+        if (arr[i] === obj){
+            return true;
+        }
+    }
+    return false;
+}
+
 module.exports = function (nodecg) {
 
     var RepsAndNames = require('./reps-and-names.js')(nodecg);
@@ -41,12 +50,18 @@ module.exports = function (nodecg) {
 
     constellation.on(`channel:${channelId}:followed`, data => {
         if (data.following) {
-            nodecg.sendMessage(RepsAndNames.MessageNames.channel.followed, data);
-            RepsAndNames.ReplicantData.channel.followers.total.value = ReplicantData.channel.followers.total.value + 1;
+            var refollowing = array_contains(RepsAndNames.ReplicantData.channel.announcedFollowers.value, data.user.username);
+            if (RepsAndNames.ReplicantData.dashboard.allowRefollow.value || !refollowing) {
+                if (!refollowing) {
+                    RepsAndNames.ReplicantData.channel.announcedFollowers.value.push(data.user.username);
+                }
+                nodecg.sendMessage(RepsAndNames.MessageNames.channel.followed, data.user);
+                RepsAndNames.ReplicantData.channel.numFollowers.value = RepsAndNames.ReplicantData.channel.numFollowers.value + 1;
+            }
         }
         else {
-            nodecg.sendMessage(RepsAndNames.MessageNames.channel.unfollowed, data);
-            RepsAndNames.ReplicantData.channel.followers.total.value = ReplicantData.channel.followers.total.value - 1;
+            nodecg.sendMessage(RepsAndNames.MessageNames.channel.unfollowed, data.user);
+            RepsAndNames.ReplicantData.channel.numFollowers.value = RepsAndNames.ReplicantData.channel.numFollowers.value - 1;
         }
     });
 

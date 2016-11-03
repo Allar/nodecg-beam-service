@@ -7,13 +7,14 @@ var RepsAndNames = {
             updateRequest: 'dashboard-update-request'
         },
         channel: {
-            online: 'beam-channel-online',
-            offline: 'beam-channel-offline',
-            followed: 'beam-channel-followed',
-            unfollowed: 'beam-channel-unfollowed',
+            followed: 'channel-followed',
+            unfollowed: 'channel-unfollowed'
         }
     },
     ReplicantData: {
+        dashboard: {
+            allowRefollow: nodecg.Replicant('DashboardAllowRefollow', {defaultValue: false})
+        },
         user: {
             sparks: nodecg.Replicant('UserSparks', {defaultValue: 0}),
             experience: nodecg.Replicant('UserExp', {defaultValue: 0})
@@ -26,9 +27,10 @@ var RepsAndNames = {
             viewersCurrent: nodecg.Replicant('ChannelViewersCurrent', {defaultValue: 0}),
             numFollowers: nodecg.Replicant('ChannelFollowers', {defaultValue: 0}),
             description: nodecg.Replicant('ChannelDescription', {defaultValue: "Unknown"}),
-            typeId: nodecg.Replicant('ChannelDescription', {defaultValue: "Unknown"}),
+            typeId: nodecg.Replicant('ChannelTypeId', {defaultValue: 0}),
             interactive: nodecg.Replicant('ChannelInteractive', {defaultValue: false}),
-            interactiveGameId: nodecg.Replicant('ChannelInteractiveGameId', {defaultValue: 0})
+            interactiveGameId: nodecg.Replicant('ChannelInteractiveGameId', {defaultValue: 0}),
+            announcedFollowers: nodecg.Replicant('ChannelAnnouncedFollowers', {defaultValue: []}),
         }
     }
 };
