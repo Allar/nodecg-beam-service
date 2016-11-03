@@ -1,0 +1,9 @@
+{
+  "name": "nodecg-beam-service",
+  "dependencies": {
+    "nodecg-replicant-input": "NodeCGElements/nodecg-replicant-input",
+    "paper-card": "PolymerElements/paper-card",
+    "paper-icon-button": "PolymerElements/paper-icon-button",
+    "iron-icons": "PolymerElements/iron-icons"
+  }
+}

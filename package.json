@@ -1,0 +1,39 @@
+{
+  "name": "nodecg-beam-service",
+  "version": "0.1.0",
+  "description": "Listens to events from Beam",
+  "homepage": "https://gamemak.in",
+  "author": {
+    "name": "Michael Allar",
+    "email": "allar@michaelallar.com",
+    "url": "http://allarsblog.com"
+  },
+  "files": [
+    "dashboard",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "beam",
+    "service",
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "~0.8.0",
+    "dashboardPanels": [
+      {
+        "name": "beam-service",
+        "title": "Beam Service",
+        "width": 4,
+        "file": "beam-service.html",
+        "headerColor": "#9f9bbd"
+      }
+    ]
+  },
+  "repository": "https://github.com/Allar/nodecg-beam-service.git",
+  "license": "MIT",
+  "dependencies": {
+    "constellation-client": "^1.0.3",
+    "request": "latest"
+  }
+}
