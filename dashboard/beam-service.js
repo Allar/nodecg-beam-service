@@ -1,23 +1,52 @@
 'use strict';
 
-var ReplicantData = {
-    channel: {
-        viewers: {
-            current: nodecg.Replicant('ChannelCurrentViewers', {defaultValue: 0}),
-            total: nodecg.Replicant('ChannelTotalViewers', {defaultValue: 0})
+//@TODO: Make this better and some how use reps-and-names.js
+var RepsAndNames = {
+    MessageNames: {
+        dashboard: {
+            updateRequest: 'dashboard-update-request'
         },
-        followers: {
-            total: nodecg.Replicant('ChannelTotalFollowers', {defaultValue: 0})
+        channel: {
+            online: 'beam-channel-online',
+            offline: 'beam-channel-offline',
+            followed: 'beam-channel-followed',
+            unfollowed: 'beam-channel-unfollowed',
+        }
+    },
+    ReplicantData: {
+        user: {
+            sparks: nodecg.Replicant('UserSparks', {defaultValue: 0}),
+            experience: nodecg.Replicant('UserExp', {defaultValue: 0})
+        },
+        channel: {
+            online: nodecg.Replicant('ChannelOnline', {defaultValue: "Unknown"}),
+            name: nodecg.Replicant('ChannelName', {defaultValue: "Unknown"}),
+            audience: nodecg.Replicant('ChannelAudience', {defaultValue: "family"}),
+            viewersTotal: nodecg.Replicant('ChannelViewersTotal', {defaultValue: 0}),
+            viewersCurrent: nodecg.Replicant('ChannelViewersCurrent', {defaultValue: 0}),
+            numFollowers: nodecg.Replicant('ChannelFollowers', {defaultValue: 0}),
+            description: nodecg.Replicant('ChannelDescription', {defaultValue: "Unknown"}),
+            typeId: nodecg.Replicant('ChannelDescription', {defaultValue: "Unknown"}),
+            interactive: nodecg.Replicant('ChannelInteractive', {defaultValue: false}),
+            interactiveGameId: nodecg.Replicant('ChannelInteractiveGameId', {defaultValue: 0})
         }
     }
 };
 
-ReplicantData.channel.viewers.current.on('change', function(newValue, oldValue) {
-    document.getElementById("Viewers").textContent=newValue;
+RepsAndNames.ReplicantData.channel.viewersCurrent.on('change', function(newValue, oldValue) {
+    document.getElementById("Viewers").textContent = newValue;
 });
 
-ReplicantData.channel.followers.total.on('change', function(newValue, oldValue) {
-    document.getElementById("Followers").textContent=newValue;
+RepsAndNames.ReplicantData.channel.numFollowers.on('change', function(newValue, oldValue) {
+    document.getElementById("Followers").textContent = newValue;
 });
 
-nodecg.sendMessage('beam-dashboard-update-request', null);
+RepsAndNames.ReplicantData.user.sparks.on('change', function(newValue, oldValue) {
+    document.getElementById("Sparks").textContent = newValue;
+});
+
+RepsAndNames.ReplicantData.user.experience.on('change', function(newValue, oldValue) {
+    document.getElementById("Experience").textContent = newValue;
+});
+
+nodecg.sendMessageToBundle(RepsAndNames.MessageNames.dashboard.updateRequest, 'nodecg-beam-service');

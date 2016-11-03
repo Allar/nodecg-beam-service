@@ -1,0 +1,8 @@
+{
+    "type": "object",
+    "properties": {
+        "channel": { "type": "integer" },
+        "user": { "type": "integer" }
+    },
+    "required": ["channel", "user"]
+}
