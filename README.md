@@ -1,6 +1,6 @@
 # nodecg-beam-service
 
-This is a nodecg bundle that provides access to [Beam.pro](http://beam.pro) channel and user data.
+This is a [nodecg](https://github.com/nodecg/nodecg) bundle that provides access to [Beam.pro](http://beam.pro) channel and user data.
 
 This doesn't provide any graphical elements itself, but allows other bundles to easily grab Beam info and catch Beam events.
 
