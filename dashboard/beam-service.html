@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="import" href="components/nodecg-replicant/nodecg-replicant">
+    <link rel="import" href="components/paper-input/paper-input.html">
+    <link rel="import" href="components/paper-button/paper-button.html">
+    <link rel="import" href="components/nodecg-replicant/nodecg-replicant.html">
     <link rel="import" href="components/paper-card/paper-card.html">
     <link rel="import" href="components/iron-icons/iron-icons.html">
     <link rel="import" href="components/paper-icon-button/paper-icon-button.html">
     <link rel="import" href="components/nodecg-message-button/nodecg-message-button.html">
     <link rel="import" href="components/nodecg-toggle/nodecg-toggle.html">
+    <link rel="stylesheet" type="text/css" href="style.css">
     
 </head>
 <body>
@@ -16,6 +19,7 @@
         <div class="card-actions">
             Viewers: <span id="Viewers">0</span>
             Followers: <span id="Followers">0</span>
+            <br/>
             Sparks: <span id="Sparks">0</span>
             Exp: <span id="Experience">0</span>
         </div>
@@ -24,6 +28,13 @@
         <div class="card-actions">
             <nodecg-replicant replicant-name="DashboardAllowRefollow"></nodecg-replicant>
             <nodecg-toggle replicant-name="DashboardAllowRefollow">Allow Refollows</nodecg-toggle>
+        </div>
+    </paper-card>
+    <paper-card heading="Testing">
+        <div class="card-actions">
+            Followers
+            <paper-input id="FakeFollowerName" label="Follower Name">Assss</paper-input>
+            <paper-button raised class="info" id="TriggerNewFollowerButton">Trigger New Follower</paper-button>
         </div>
     </paper-card>
     <script src="beam-service.js"></script>

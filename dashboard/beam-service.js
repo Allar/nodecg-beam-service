@@ -51,4 +51,14 @@ RepsAndNames.ReplicantData.user.experience.on('change', function(newValue, oldVa
     document.getElementById("Experience").textContent = newValue;
 });
 
+var TriggerNewFollowerButton = document.getElementById("TriggerNewFollowerButton");
+TriggerNewFollowerButton.addEventListener('tap', (e) => {
+    var fakeFollowerName = document.querySelector("#FakeFollowerName").value;
+    if (fakeFollowerName !== null && fakeFollowerName.length > 0) {
+        var fakeUser = { username: fakeFollowerName };
+        nodecg.sendMessage(RepsAndNames.MessageNames.channel.followed, fakeUser);
+    }
+    
+});
+
 nodecg.sendMessageToBundle(RepsAndNames.MessageNames.dashboard.updateRequest, 'nodecg-beam-service');

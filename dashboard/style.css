@@ -1,0 +1,11 @@
+paper-card {
+    float: left;
+    min-height: 128px;
+    min-width: 256px;
+}
+
+paper-button.info {
+    background-color: #645BA6;
+    color: white;
+
+}
