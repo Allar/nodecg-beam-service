@@ -26,8 +26,16 @@ module.exports = function (nodecg) {
             if (!error && response.statusCode == 200) {
                 var data = JSON.parse(body);
                 Object.keys(data).forEach(function(key,index) {
-                    if (RepsAndNames.ReplicantData.channel.hasOwnProperty(key)) {
-                        RepsAndNames.ReplicantData.channel[key].value = data[key];
+                    if (key == "user") {
+                        Object.keys(data.user).forEach(function(user_key, user_index) {
+                            if (RepsAndNames.ReplicantData.user.hasOwnProperty(user_key)) {
+                                RepsAndNames.ReplicantData.user[user_key].value = data.user[user_key];
+                            }
+                        });
+                    } else {
+                        if (RepsAndNames.ReplicantData.channel.hasOwnProperty(key)) {
+                            RepsAndNames.ReplicantData.channel[key].value = data[key];
+                        }
                     }
                 });
             }
@@ -56,12 +64,10 @@ module.exports = function (nodecg) {
                     RepsAndNames.ReplicantData.channel.announcedFollowers.value.push(data.user.username);
                 }
                 nodecg.sendMessage(RepsAndNames.MessageNames.channel.followed, data.user);
-                RepsAndNames.ReplicantData.channel.numFollowers.value = RepsAndNames.ReplicantData.channel.numFollowers.value + 1;
             }
         }
         else {
             nodecg.sendMessage(RepsAndNames.MessageNames.channel.unfollowed, data.user);
-            RepsAndNames.ReplicantData.channel.numFollowers.value = RepsAndNames.ReplicantData.channel.numFollowers.value - 1;
         }
     });
 
