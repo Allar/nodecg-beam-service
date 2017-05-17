@@ -1,8 +1,8 @@
 {
     "type": "object",
     "properties": {
-        "channel": { "type": "integer" },
-        "user": { "type": "integer" }
+        "channel": { "type": "integer", "default": 329582 },
+        "user": { "type": "integer", "default": 468820 }
     },
     "required": ["channel", "user"]
 }
